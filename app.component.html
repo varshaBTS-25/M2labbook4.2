@@ -1,0 +1,17 @@
+<table *ngIf="data && data.length" >
+	<th *ngFor="let header of headers">
+		{{header}}
+		
+
+	</th>
+	<tr>
+		<td *ngFor="let filter of filters;let i=index;let header of headers">
+			<input type='text' placeholder="{{header}}" [(ngModel)]='(filters[i]).filter' />
+		</td>
+	</tr>
+	<tr *ngFor="let rows of data | pipeFilter:filters">
+		<td *ngFor="let header of headers ">
+			{{rows.get(header)}}
+		</td>
+	</tr>
+</table>
